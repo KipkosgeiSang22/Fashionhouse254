@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %} {% endblock %} |FashionHouse254</title>
+</head>
+<body>
+    <nav class="px-6 py-6 flex justify-between items-center border-b border-gray-700">
+        <a href="{% url 'core:index' %}" class="semi-bold text-xl" >Fashion House</a>
+        <div class="space-x-6">
+            <a href="{% url 'core:browse' %}" class="inline-block mt-6 px-4 py-3 text-lg font semi-bold rounded-xl bg-teal-500 text-white hover:bg-gray-700" >browse</a>
+            <a href="{% url 'core:contact' %}" class="inline-block mt-6 px-4 py-3 text-lg font semi-bold rounded-xl bg-teal-500 text-white hover:bg-gray-700" > Contact </a>
+            <a href="{% url 'inbox' %}" class="inline-block mt-6 px-4 py-3 text-lg font semi-bold rounded-xl bg-teal-500 text-white hover:bg-gray-700" >inbox</a>
+            <a href="{% url 'admin:index' %}" class="inline-block mt-6 px-4 py-3 text-lg font semi-bold rounded-xl bg-teal-500 text-white hover:bg-gray-700" >admin page</a>
+            <a href="{% url 'core:signup' %}" class="inline-block mt-6 px-4 py-3 text-lg font semi-bold rounded-xl bg-teal-500 text-white hover:bg-gray-700" >Sign up</a>
+            <a href="{% url 'core:login' %}" class="inline-block mt-6 px-4 py-3 text-lg font semi-bold rounded-xl bg-teal-500 text-white hover:bg-gray-700" >Log in</a>
+        </div>
+       
+    </nav>
+    {% block body %} {% endblock %}
+    <footer class="px-6 py-6 flex justify-betweenbg-gray-100">
+        <div class="w-2/3">
+            <h3 class="mb-5 font-semibold text-gray-900"> About </h3>
+            <p class="text-lg text-white-400"> Welcome to fashion House</p>
+
+        </div>
+        <div class="w-1/3">
+            <h3 class="font-semibold text-white-400"> Menu </h3>
+            <ul class="space-y-4">
+                <li><a href="#" class="text-lg"> Home </a></li>
+                <li><a href="#" class="text-lg"> Contacts </a></li>
+                <li><a href="#" class="text-lg"> Terms of use</a></li>
+
+            </ul>
+        </div>
+
+    </footer>
+</body>
+</html>

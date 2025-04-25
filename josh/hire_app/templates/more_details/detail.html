@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %} {{ item.name}} {% endblock %}
+{% block body %}
+
+<div class="grid grid-cols-5 gap-6 py-12 px-6">
+    <div class="col-span-3 ">
+        <img src="{{item.image.url}}" class="rounded-xl ">
+    </div>
+
+    <div class="cols-span-2 p-6 bg-gray-100 rounded-xl">
+        <h1 class="mb-6 text-3xl">{{ item.name}}</h1>
+        <p class="text-gray-500"><strong> Hiring Price </strong> {{ item.hiring_price}}</p>
+        {% if item.description %}
+        <p class="text-gray-700"><strong> Description </strong> {{ item.description}}</p>
+        {% endif %}
+        <a href="{% url 'core:contact' %}" class="inline-block mt-6 px-4 py-3 text-lg font semi-bold rounded-xl bg-teal-500 text-white hover:bg-gray-700"> Contacts </a>
+    </div>
+</div>
+
+
+<div class="px-6 py-2 bg-gray-100 rounded-xl">
+    <h3 class="mb-12 text-3xl text-center"> Related Items</h3>
+<div class="grid grid-cols-3 gap-3">
+    {% if related_items %}
+    {% for outfit in related_items %}
+    <div class="flex flex-col items-center">
+        <a href="{% url 'more_details:detail' outfit.id %}">
+            <div>
+                <img src=" {{outfit.image.url}}" class="rounded-t-xl">
+            </div>
+            <div class="p-6 bg-white rounded-b-xl">
+                <h3 class="text-2xl"> {{ outfit.name }}</h3>
+                <h3 class="text-2xl"> {{ outfit.category }}</h3>
+                <p class="mb-12 text-2xl">Price:Ksh{{ outfit.hiring_price}}</p>
+
+            </div>
+        </a>
+    </div>
+
+   
+    {% endfor %}
+    {% else %}
+    <p class="text-center"> No related Outfit</p>
+    {% endif %}
+    </div>
+
+
+</div>
+{% endblock%}

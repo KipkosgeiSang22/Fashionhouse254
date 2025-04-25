@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+    <div class="mt-6 px-6 py-12 bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 rounded-xl">
+        <h3 class="mb=12 text-2xl text-center"> Hiring items</h3>
+        <div class="grid grid-cols-3 gap-3">
+            {% for outfit in outfits %}
+            
+            <!-- <div> -->
+            <div class="flex flex-col items-center">
+                
+                <a href="{% url 'more_details:detail' outfit.id %}">
+                    <div>
+                    <img src="{{ outfit.image.url }}" class="rounded-t-xl">
+                </div>
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h3 class="text-2xl">{{ outfit.name }}</h3>
+                    <!-- <h3 class="text-2xl">{{ outfit.category }}</h3>
+                    <h3 class="text-2xl">{{ outfit.id }}</h3> -->
+                    <p class="text-2xl">Price:Ksh{{ outfit.hiring_price}}</p>
+                </div>
+
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="mt-6 px-6 py-12 bg-gradient-to-r from-blue-200 via-blue-100 to-blue-200 rounded-xl">
+        <h3 class="mb=12 text-2xl text-center"> Selling items</h3>
+        <div class="grid grid-cols-3 gap-3">
+            {% for outfit in type %}
+            
+            <!-- <div> -->
+            <div class="flex flex-col items-center">
+                
+                <a href="{% url 'more_data:detail' outfit.id %}">
+                    <div>
+                    <img src="{{ outfit.image.url }}" class="rounded-t-xl">
+                </div>
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h3 class="text-2xl">{{ outfit.name }}</h3>
+                    <!-- <h3 class="text-2xl">{{ outfit.category }}</h3>
+                    <h3 class="text-2xl">{{ outfit.id }}</h3> -->
+                    <p class="text-2xl">Price:Ksh{{ outfit.selling_price}}</p>
+                </div>
+
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+        <h3 class="mb=12 text-2xl text-center"> All categories for hire items</h3>
+        <div class="grid grid-cols-3 gap-3">
+    </div>
+
+    <div class="grid grid-cols-3 gap-3">
+            {% for category in categories %}
+            <a href="#">
+              
+            <div class="p-6 bg-white rounded-b-xl">
+                <h3 class="text-2xl">{{ category.name }}</h3>
+                <p class="text-gray-500">{{category.clothes.count}}</p>
+                
+            </div>
+    
+            </a>
+ 
+    
+            {% endfor %}
+        </div>
+        <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+            <h3 class="mb=12 text-2xl text-center"> All categories for sell items</h3>
+            <div class="grid grid-cols-3 gap-3">
+        </div>
+            
+    <div class="grid grid-cols-3 gap-3">
+            {% for category in gender %}
+            <a href="#">
+              
+            <div class="p-6 bg-white rounded-b-xl">
+                <!-- <h3 class="text-2xl">{{ category.name }}</h3> -->
+                <p class="text-gray-500">{{category.clothes.count}}</p>
+                
+            </div>
+    
+            </a>
+ 
+    
+            {% endfor %}
+        </div>
+        
+    <!-- </div> -->
+       
+
+   
+ 
+{% endblock %}

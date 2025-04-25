@@ -1,0 +1,47 @@
+<form method="get" action="{% url 'browse' %}">
+    <!-- The action="{% url 'browse' %}" dynamically generates the URL for the browse view when the form is submitted -->
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+
+    <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+        <h3 class="mb=12 text-2xl text-center"> Selling items</h3>
+        <div class="grid grid-cols-3 gap-3 bg-gray-300">
+            {% for item in sell_results %}
+            
+            <!-- <div> -->
+            <div class="flex flex-col items-center">
+                <a href="{% url 'more_data:detail' item.id %}">
+                    <div>
+                        <img src="{{ item.image.url }}" class="rounded-t-xl">
+                        <p class="text-2xl">{{ item.name }} - Ksh{{ item.seing_price }}</p>
+                        
+                    </div>
+                </a>
+             
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+        <h3 class="mb=12 text-2xl text-center"> Hiring items</h3>
+        <div class="grid grid-cols-3 gap-3">
+            {% for item in hire_results %}
+            
+            <!-- <div> -->
+            <div class="flex flex-col items-center">
+                <a href="{% url 'more_details:detail' item.id %}">
+                    <div>
+                        <img src="{{ item.image.url }}" class="rounded-t-xl">
+                        <p class="text-2xl">{{ item.name }} - Ksh{{ item.hiring_price }}</p>
+                    </div>
+                </a>
+             
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>

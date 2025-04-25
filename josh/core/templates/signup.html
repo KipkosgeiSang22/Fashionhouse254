@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %} Sign Up {% endblock %}
+{% block body %}
+<div class="w-1/2 my-6 mx-auto bg-gray-100 p-6 rounded-xl">
+    <h2 class="mb-6 text-3xl">Sign Up</h2>
+    <!-- {{ form.as_p }} -->
+    <!-- chinja sintax -->
+     <!-- postrequest-user submitting the request himself -->
+    <!-- default-get request, pre request-given to a user to fill in data  -->
+     <!-- we have to override/change it to post request when a user is submitting request because by deault it is get -->
+    <!-- post request hides the url, the data being submitted to the server -->
+    <!-- <form method="post" action="." the dot means it saves in the save form --> 
+     <form method="post" action=".">
+        <!-- cross site request forgery-> prevent people from using wrong links to direct them into the site and commit cyber security illegal stuff -->
+         <!-- It knows the source of a url request -->
+
+         {% csrf_token %}
+
+         <div class="mb-5">
+            <label class="inline-block mb-2"> Username </label> <br>{{form.username}}
+         </div>
+
+         <div class="mb-5">
+            <label class="inline-block mb-2"> email </label> <br>{{form.email}}
+         </div>
+
+         <div class="mb-5">
+            <label class="inline-block mb-2"> password </label> <br>{{form.password1}}
+         </div>
+
+         <div class="mb-5">
+            <label class="inline-block mb-2"> Repeat password </label> <br>{{form.password2}}
+         </div>
+
+         {% if form.errors or from.non_field_errors %}
+         <div class="mb-3 p-6 bg-red-100 rounded-xl">
+            {% for field in form %}
+            {{ field.errors }}
+            {% endfor %}
+
+            {{ form.non_field_errors }}
+            <!-- chinja-syntax -->
+             {% endif %}
+         </div>
+         <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+     </form>
+</div>
+
+
+{% endblock %}
